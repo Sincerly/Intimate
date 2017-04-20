@@ -1,5 +1,7 @@
 package com.sincerly.intimate.net;
 
+import com.sincerly.intimate.common.Common;
+
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -9,15 +11,14 @@ import retrofit2.Retrofit;
  */
 
 public class RetrofitApi {
-    public static Retrofit retrofit;
-
-    public static Retrofit getRetrofit(){
-        if(retrofit==null){
-            retrofit=new Retrofit.Builder()
-                    .baseUrl("www.baidu.com")
+    public static RetrofitService retrofitService;
+    public static RetrofitService getService(){
+        if(retrofitService==null){
+            Retrofit retrofit=new Retrofit.Builder()
+                    .baseUrl(Common.Net.URL)
                     .build();
+            retrofitService=retrofit.create(RetrofitService.class);
         }
-        return  retrofit;
+        return retrofitService;
     }
-
 }

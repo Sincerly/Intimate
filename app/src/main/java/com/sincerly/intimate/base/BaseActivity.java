@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.sincerly.intimate.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Administrator on 2017/4/18.
+ *
+ * @link setContentViewFront
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -17,6 +21,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentViewFront();
         setContentView(getLayoutId());
+        initView();
+        ButterKnife.bind(this);
     }
 
     protected void setContentViewFront(){
@@ -55,5 +61,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getLayoutId();
     protected abstract void initView();
-    protected abstract void initEvent();
 }
